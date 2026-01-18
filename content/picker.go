@@ -9,6 +9,16 @@ import (
 	"github.com/ray-q/umineko_bot/domain"
 )
 
+var doubleErikaMemes = []string{
+	"DOUBLE ERIKA DAY 🎉\n\nThe detective's authority is DOUBLE absolute today!",
+	"DOUBLE ERIKA DAY 🎉\n\nTwo Erikas in one day? Intellectual rapture x2!",
+	"DOUBLE ERIKA DAY 🎉\n\nBern blessed us with maximum Erika content today.",
+	"DOUBLE ERIKA DAY 🎉\n\nToday's truth: You can never have too much Erika.",
+	"DOUBLE ERIKA DAY 🎉\n\nKnox's 11th: Thou shalt celebrate double Erika days.",
+	"DOUBLE ERIKA DAY 🎉\n\nThis is what peak detective content looks like.",
+	"DOUBLE ERIKA DAY 🎉\n\nErika in the morning, Erika in the evening. As god intended.",
+}
+
 type RandomPicker struct {
 	rng      *rand.Rand
 	textOnly bool
@@ -64,7 +74,12 @@ func (p *RandomPicker) formatQuote(quote domain.Quote) domain.Post {
 func (p *RandomPicker) formatImage(image domain.Image, content *domain.Content) domain.Post {
 	var parts []string
 
-	if image.Character != "" {
+	isErika := strings.ToLower(image.Character) == "erika"
+	if isErika {
+		parts = append(parts, doubleErikaMemes[p.rng.Intn(len(doubleErikaMemes))])
+	}
+
+	if image.Character != "" && !isErika {
 		charKey := strings.ToLower(image.Character)
 		if opinions, ok := content.Opinions[charKey]; ok && len(opinions) > 0 {
 			opinion := opinions[p.rng.Intn(len(opinions))]
