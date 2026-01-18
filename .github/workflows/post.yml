@@ -1,0 +1,52 @@
+name: Post Daily Umineko Content
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # Random character post at 09:00 UTC
+    - cron: '0 21 * * *'  # Erika post at 21:00 UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Post mode'
+        required: true
+        default: 'random'
+        type: choice
+        options:
+          - random
+          - erika
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: 'stable'
+          cache: true
+
+      - name: Build
+        run: go build -o umineko_bot .
+
+      - name: Determine mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.schedule }}" = "0 21 * * *" ]; then
+            echo "mode=erika" >> $GITHUB_OUTPUT
+          else
+            echo "mode=random" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post to Twitter
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          DATA_DIR: ./data
+        run: ./umineko_bot --mode=${{ steps.mode.outputs.mode }}
