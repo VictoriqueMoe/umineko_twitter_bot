@@ -5,7 +5,7 @@ A Twitter bot that posts Umineko no Naku Koro ni character images with in-charac
 ## Features
 
 - **Random Mode**: Posts a random character image with an in-character opinion/quote
-- **Erika Mode**: Posts only Erika images (no text, just vibes)
+- **Erika Mode**: Posts only Erika images
 - Day counter tracking
 - Automated posting via GitHub Actions (09:00 UTC and 21:00 UTC)
 

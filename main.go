@@ -2,38 +2,24 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 
 	"github.com/joho/godotenv"
+	"github.com/ray-q/umineko_bot/api"
 	"github.com/ray-q/umineko_bot/api/twitter"
 	"github.com/ray-q/umineko_bot/bot"
 	"github.com/ray-q/umineko_bot/content"
+	"github.com/ray-q/umineko_bot/content/loader"
+	"github.com/ray-q/umineko_bot/content/picker"
 )
-
-type dryRunPoster struct{}
-
-func (d *dryRunPoster) Post(text string) error {
-	fmt.Println("=== DRY RUN - Would post: ===")
-	fmt.Println(text)
-	fmt.Println("=============================")
-	return nil
-}
-
-func (d *dryRunPoster) PostWithImage(text string, imagePath string) error {
-	fmt.Println("=== DRY RUN - Would post: ===")
-	fmt.Println(text)
-	fmt.Printf("Image: %s\n", imagePath)
-	fmt.Println("=============================")
-	return nil
-}
 
 func main() {
 	dryRun := flag.Bool("dry-run", false, "Print what would be posted without actually posting")
 	textOnly := flag.Bool("text-only", false, "Only post text quotes, no images")
-	mode := flag.String("mode", "random", "Post mode: random (character with opinion) or erika (Erika image only)")
+	mode := ModeRandom
+	flag.Var(&mode, "mode", "Post mode: random, erika")
 	flag.Parse()
 
 	_ = godotenv.Load()
@@ -41,9 +27,9 @@ func main() {
 	dataDir := resolveDataDir()
 	log.Printf("Using data directory: %s", dataDir)
 
-	var poster bot.Poster
+	var poster api.Poster
 	if *dryRun {
-		poster = &dryRunPoster{}
+		poster = &api.DryRunPoster{}
 	} else {
 		poster = twitter.NewClient(twitter.Config{
 			APIKey:            os.Getenv("TWITTER_API_KEY"),
@@ -53,20 +39,20 @@ func main() {
 		})
 	}
 
-	loader := content.NewFileLoader(dataDir)
-	var picker bot.Picker
-	switch *mode {
-	case "erika":
-		picker = content.NewErikaPicker()
-	default:
+	contentLoader := loader.NewFileLoader(dataDir)
+	var p content.Picker
+	switch mode {
+	case ModeErika:
+		p = picker.NewErikaPicker()
+	case ModeRandom:
 		if *textOnly {
-			picker = content.NewRandomPickerTextOnly()
+			p = picker.NewRandomPickerTextOnly()
 		} else {
-			picker = content.NewRandomPicker()
+			p = picker.NewRandomPicker()
 		}
 	}
 
-	b := bot.New(poster, loader, picker)
+	b := bot.New(poster, contentLoader, p)
 
 	if err := b.Run(); err != nil {
 		log.Fatal(err)

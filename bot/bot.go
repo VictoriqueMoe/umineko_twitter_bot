@@ -1,14 +1,19 @@
 package bot
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ray-q/umineko_bot/api"
+	"github.com/ray-q/umineko_bot/content"
+)
 
 type Bot struct {
-	poster Poster
-	loader ContentLoader
-	picker Picker
+	poster api.Poster
+	loader content.Loader
+	picker content.Picker
 }
 
-func New(poster Poster, loader ContentLoader, picker Picker) *Bot {
+func New(poster api.Poster, loader content.Loader, picker content.Picker) *Bot {
 	return &Bot{
 		poster: poster,
 		loader: loader,
@@ -17,16 +22,16 @@ func New(poster Poster, loader ContentLoader, picker Picker) *Bot {
 }
 
 func (b *Bot) Run() error {
-	content, err := b.loader.Load()
+	c, err := b.loader.Load()
 	if err != nil {
 		return fmt.Errorf("failed to load content: %w", err)
 	}
 
-	if content.IsEmpty() {
+	if c.IsEmpty() {
 		return fmt.Errorf("no content available to post")
 	}
 
-	post := b.picker.Pick(content)
+	post := b.picker.Pick(c)
 
 	if post.ImagePath != "" {
 		return b.poster.PostWithImage(post.Text, post.ImagePath)
