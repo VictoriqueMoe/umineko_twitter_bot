@@ -17,7 +17,6 @@ import (
 
 func main() {
 	dryRun := flag.Bool("dry-run", false, "Print what would be posted without actually posting")
-	textOnly := flag.Bool("text-only", false, "Only post text quotes, no images")
 	mode := ModeRandom
 	flag.Var(&mode, "mode", "Post mode: random, erika")
 	flag.Parse()
@@ -40,16 +39,15 @@ func main() {
 	}
 
 	contentLoader := loader.NewFileLoader(dataDir)
+	statePath := resolveStatePath()
+	log.Printf("Using state file: %s", statePath)
+
 	var p content.Picker
 	switch mode {
 	case ModeErika:
-		p = picker.NewErikaPicker()
+		p = picker.NewErikaPicker(dataDir, statePath)
 	case ModeRandom:
-		if *textOnly {
-			p = picker.NewRandomPickerTextOnly()
-		} else {
-			p = picker.NewRandomPicker()
-		}
+		p = picker.NewRandomPicker(dataDir, statePath)
 	}
 
 	b := bot.New(poster, contentLoader, p)
@@ -79,4 +77,12 @@ func resolveDataDir() string {
 
 	cwd, _ := os.Getwd()
 	return filepath.Join(cwd, "data")
+}
+
+func resolveStatePath() string {
+	if path := os.Getenv("STATE_PATH"); path != "" {
+		return path
+	}
+	cwd, _ := os.Getwd()
+	return filepath.Join(cwd, ".state", "state.json")
 }

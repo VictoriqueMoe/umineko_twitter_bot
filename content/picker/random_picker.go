@@ -2,10 +2,13 @@ package picker
 
 import (
 	"fmt"
+	"log"
 	"math/rand/v2"
+	"path/filepath"
 	"strings"
 
 	"github.com/ray-q/umineko_bot/domain"
+	"github.com/ray-q/umineko_bot/state"
 )
 
 var doubleErikaMemes = []string{
@@ -19,61 +22,61 @@ var doubleErikaMemes = []string{
 }
 
 type RandomPicker struct {
-	textOnly bool
+	dataDir   string
+	statePath string
 }
 
-func NewRandomPicker() *RandomPicker {
-	return &RandomPicker{}
-}
-
-func NewRandomPickerTextOnly() *RandomPicker {
-	return &RandomPicker{textOnly: true}
+func NewRandomPicker(dataDir, statePath string) *RandomPicker {
+	return &RandomPicker{dataDir: dataDir, statePath: statePath}
 }
 
 func (p *RandomPicker) Pick(content *domain.Content) domain.Post {
-	totalQuotes := len(content.Quotes)
-	totalImages := len(content.Images)
+	imagesDir := filepath.Join(p.dataDir, "images")
 
-	if p.textOnly || totalImages == 0 {
-		if totalQuotes == 0 {
-			return domain.Post{Text: "When the seagulls cry, none shall be left alive."}
+	var s *state.State
+	if p.statePath != "" {
+		var err error
+		s, err = state.Load(p.statePath)
+		if err != nil {
+			log.Printf("Warning: could not load state: %v", err)
+			s = &state.State{}
 		}
-		idx := rand.IntN(totalQuotes)
-		return p.formatQuote(content.Quotes[idx])
+	} else {
+		s = &state.State{}
 	}
 
-	total := totalQuotes + totalImages
-	if total == 0 {
-		return domain.Post{Text: "When the seagulls cry, none shall be left alive."}
+	imagePath, relPath, err := pickRandomFile(imagesDir, s.RandomHistory)
+	if err != nil {
+		log.Printf("Error picking random image: %v", err)
+		return domain.Post{Text: "No images available."}
 	}
 
-	idx := rand.IntN(total)
-
-	if idx < totalQuotes {
-		return p.formatQuote(content.Quotes[idx])
+	if p.statePath != "" {
+		s.AddRandomPost(relPath)
+		if err := s.Save(p.statePath); err != nil {
+			log.Printf("Warning: could not save state: %v", err)
+		}
 	}
 
-	return p.formatImage(content.Images[idx-totalQuotes], content)
+	parts := strings.Split(filepath.ToSlash(relPath), "/")
+	character := ""
+	if len(parts) > 0 {
+		character = parts[0]
+	}
+
+	return p.formatImagePost(imagePath, character, content)
 }
 
-func (p *RandomPicker) formatQuote(quote domain.Quote) domain.Post {
-	text := fmt.Sprintf("\"%s\"\n\n— %s", quote.Text, quote.Character)
-	if quote.Episode != "" {
-		text += fmt.Sprintf(" (%s)", quote.Episode)
-	}
-	return domain.Post{Text: text}
-}
-
-func (p *RandomPicker) formatImage(image domain.Image, content *domain.Content) domain.Post {
+func (p *RandomPicker) formatImagePost(imagePath, character string, content *domain.Content) domain.Post {
 	var parts []string
 
-	isErika := strings.ToLower(image.Character) == "erika"
+	isErika := strings.ToLower(character) == "erika"
 	if isErika {
 		parts = append(parts, doubleErikaMemes[rand.IntN(len(doubleErikaMemes))])
 	}
 
-	if image.Character != "" && !isErika {
-		charKey := strings.ToLower(image.Character)
+	if character != "" && !isErika {
+		charKey := strings.ToLower(character)
 		if opinions, ok := content.Opinions[charKey]; ok && len(opinions) > 0 {
 			opinion := opinions[rand.IntN(len(opinions))]
 			parts = append(parts, opinion)
@@ -81,12 +84,17 @@ func (p *RandomPicker) formatImage(image domain.Image, content *domain.Content) 
 	}
 
 	var hashtag string
-	if image.Character != "" {
-		hashtag = fmt.Sprintf("#%s #UminekoNoNakuKoroNi", strings.ReplaceAll(image.Character, " ", ""))
+	if character != "" {
+		cleanName := strings.TrimRight(character, "0123456789")
+		if cleanName == "" {
+			cleanName = character
+		}
+		cleanName = strings.ReplaceAll(cleanName, " ", "")
+		hashtag = fmt.Sprintf("#%s #UminekoNoNakuKoroNi", cleanName)
 	} else {
 		hashtag = "#UminekoNoNakuKoroNi"
 	}
 	parts = append(parts, hashtag)
 
-	return domain.Post{Text: strings.Join(parts, "\n\n"), ImagePath: image.Path}
+	return domain.Post{Text: strings.Join(parts, "\n\n"), ImagePath: imagePath}
 }

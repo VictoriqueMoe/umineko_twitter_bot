@@ -57,10 +57,10 @@ go run . --mode=erika
 
 The bot runs automatically twice daily:
 
-| Time (UTC) | Mode | Content |
-|------------|------|---------|
-| 09:00 | random | Character image + opinion |
-| 21:00 | erika | Erika image only |
+| Time (UTC) | Mode   | Content                   |
+|------------|--------|---------------------------|
+| 09:00      | random | Character image + opinion |
+| 21:00      | erika  | Erika image only          |
 
 ### Required Secrets
 

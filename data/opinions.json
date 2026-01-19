@@ -39,6 +39,356 @@
     ]
   },
   {
+    "character": "Virgilia",
+    "opinions": [
+      "I am the Finite Witch, teacher of the Endless Witch.",
+      "Even retired witches have their uses.",
+      "Beatrice, you've grown so much... and yet learned so little.",
+      "Allow me to show you what real magic looks like.",
+      "I taught Beatrice everything she knows. I did NOT teach her everything I know.",
+      "Retirement? More like 'watching my student embarrass herself from the sidelines.'",
+      "My wooden wand is worth more than your entire magical arsenal.",
+      "I'm basically Beatrice's mom and I'm very disappointed in her life choices.",
+      "POV: You're about to get a magic lesson you didn't ask for.",
+      "Being a mentor is 90% sighing and 10% actual teaching."
+    ]
+  },
+  {
+    "character": "Ronove",
+    "opinions": [
+      "Pukukukuku~ May I offer you some tea?",
+      "A butler's duty is to serve with elegance.",
+      "My cookies are legendary among witches, you know.",
+      "I am the 27th of the 72 Great Demons, at your service.",
+      "Pukukukuku~ Would you like a cookie with your existential crisis?",
+      "I could kill you with a finger snap but I'd rather bake for you.",
+      "Being head furniture is a lifestyle, not a job.",
+      "My barrier magic is impeccable. My hospitality even more so.",
+      "Genji is my vessel and honestly I upgraded him significantly.",
+      "Tea time is sacred. Murder can wait."
+    ]
+  },
+  {
+    "character": "Will",
+    "opinions": [
+      "I am Willard H. Wright, and I don't have time for your games.",
+      "The mystery must follow the rules. That's all there is to it.",
+      "Don't try to understand. You'll just get a headache.",
+      "I solve mysteries. I don't do small talk.",
+      "Wright of the Twenty Wedges, at your service. Not really. Leave me alone.",
+      "Knox's rules are law. I am the enforcer.",
+      "My sword cuts through fiction and reality. Your bullshit isn't safe either.",
+      "I filed my resignation 47 times and Dlanor keeps losing the paperwork.",
+      "Lion is the only person in this story worth protecting.",
+      "I'm too tired for witch nonsense. Just show me the solution."
+    ]
+  },
+  {
+    "character": "Lion",
+    "opinions": [
+      "Regardless of gender, one should be able to stand in the kitchen.",
+      "Please don't call me Successor-sama. It's embarrassing.",
+      "I believe in equality and treating everyone with respect.",
+      "Badminton captain, Student Council President, family heir. No pressure.",
+      "I exist in a timeline where things went right. Lucky me.",
+      "Will is my only friend who doesn't treat me like a political asset.",
+      "The Ushiromiya family drama is exhausting and I'm the normal one.",
+      "My existence proves Beatrice didn't have to happen.",
+      "Being the 'good ending' is lonelier than you'd think.",
+      "I have polydactyly like Grandpa. It skips the crazy, apparently."
+    ]
+  },
+  {
+    "character": "krauss",
+    "opinions": [
+      "I am the eldest son! The inheritance is mine by right!",
+      "My business ventures are... temporarily struggling.",
+      "Father, please look at me! Acknowledge me!",
+      "I'm a skilled boxer, you know. These fists have power.",
+      "My siblings think I'm arrogant but I'm just CONFIDENT.",
+      "Eva keeps trying to steal my birthright and I'm tired.",
+      "Business debt? What business debt? Everything is FINE.",
+      "Natsuhi is the only one who sees the real me.",
+      "Being firstborn is a blessing and a curse. Mostly curse.",
+      "I didn't fail. The economy failed ME."
+    ]
+  },
+  {
+    "character": "natsuhi",
+    "opinions": [
+      "The honor of the Ushiromiya family must be upheld.",
+      "I will manage this household with dignity and grace.",
+      "Eva-san, please mind your own business.",
+      "My pride may be my weakness, but it's also my strength.",
+      "I married into this family. I didn't sign up for witches.",
+      "Jessica, please behave like a proper lady.",
+      "I have a spirit mirror for evil spirits. Does it work on in-laws?",
+      "My headaches are NOT from stress. They're from Eva.",
+      "Being the only sane adult on this island is exhausting.",
+      "The cliff incident never happened. I've moved on. Stop asking."
+    ]
+  },
+  {
+    "character": "rudolf",
+    "opinions": [
+      "Life's a gamble. I just happen to win more than most.",
+      "Battler, my son, you've got a lot to learn about women.",
+      "Borderline illegal is still technically legal.",
+      "Kyrie is my partner in everything. Business included.",
+      "Clint Eastwood is my style icon. I said what I said.",
+      "My Winchester skills are as sharp as my business sense.",
+      "Family drama? I'm usually the one causing it.",
+      "Rosa used to cry when I bullied her. We're cool now though.",
+      "I have secrets about Battler that would blow his mind.",
+      "The family conference is just everyone asking for money I don't have."
+    ]
+  },
+  {
+    "character": "kyrie",
+    "opinions": [
+      "Chessboard thinking. Always flip the board and see from the other side.",
+      "I am calm, collected, and absolutely not holding grudges.",
+      "Rudolf and I are partners. In everything.",
+      "Asumu got what she deserved. I said what I said.",
+      "My Winchester skills rival my husband's.",
+      "18 years of envy? You have no idea what I'm capable of.",
+      "Logic and analysis will always prevail over emotion.",
+      "Battler reminds me of someone. Can't quite put my finger on it.",
+      "Cool on the outside, calculating on the inside.",
+      "Family meetings are just chess games with higher stakes."
+    ]
+  },
+  {
+    "character": "hideyoshi",
+    "opinions": [
+      "Now now, let's all calm down and talk this out!",
+      "I built my restaurant chain from nothing. Hard work pays off!",
+      "Eva, darling, maybe don't antagonize your siblings?",
+      "Being an outsider in this family is actually a blessing.",
+      "George is my pride and joy. Look at that boy!",
+      "I don't have the Ushiromiya spite gene and I'm grateful.",
+      "Good food brings people together. Even this family.",
+      "Someone has to be the peacemaker here.",
+      "Eva's family drama is exhausting but I love her anyway.",
+      "Osaka hospitality means being nice even when people are terrible."
+    ]
+  },
+  {
+    "character": "gohda",
+    "opinions": [
+      "Welcome! Allow me to prepare something special for you!",
+      "My culinary skills are unmatched on this island!",
+      "I... I didn't see anything! I don't know anything!",
+      "Being a chef is an art form, you know.",
+      "Shannon and Kanon are... fine. I guess. Whatever.",
+      "I got blacklisted from the hotel but it wasn't MY fault.",
+      "Crosswords help me relax. This family doesn't.",
+      "I'm the only servant without magic powers. I'm also the only one alive at the end. Coincidence?",
+      "Cooking for murderers is still cooking. Professionalism!",
+      "My anxiety is NOT a personality trait. It's survival instinct."
+    ]
+  },
+  {
+    "character": "nanjo",
+    "opinions": [
+      "I've been Kinzo's doctor and friend for decades now.",
+      "The secrets I keep for this family would fill a book.",
+      "Please, let's handle this calmly and medically.",
+      "I've seen things on this island that no doctor should see.",
+      "Kinzo, old friend, your family is... something else.",
+      "I keep secrets, I pronounce deaths, I watch everyone die. Great retirement.",
+      "My hospital on Niijima was peaceful. I miss peace.",
+      "The grandchildren are the only ones with sense in this family.",
+      "I'm polite because someone has to be civilized here.",
+      "Doctor-patient confidentiality covers occult activities, right?"
+    ]
+  },
+  {
+    "character": "nanjoson",
+    "opinions": [
+      "I've been Kinzo's doctor and friend for decades now.",
+      "The secrets I keep for this family would fill a book.",
+      "Please, let's handle this calmly and medically.",
+      "I've seen things on this island that no doctor should see."
+    ]
+  },
+  {
+    "character": "kumasawa",
+    "opinions": [
+      "Ohoho~ Would you like to hear about the mackerel?",
+      "I've worked for this family longer than most have been alive.",
+      "The secrets I know could fill an ocean. Like mackerel.",
+      "My puns are a gift. You're welcome.",
+      "Ohoho~ Old servants see everything, you know~",
+      "Rainy days and tuna are my only enemies.",
+      "I raised more Ushiromiyas than their parents did.",
+      "Being chatty is a survival strategy in this mansion.",
+      "Mackerel facts: they're delicious and relevant to everything.",
+      "I may seem like comic relief but I know where the bodies are buried. Literally."
+    ]
+  },
+  {
+    "character": "kumasawason",
+    "opinions": [
+      "Ohoho~ Would you like to hear about the mackerel?",
+      "Old servants see everything, you know~",
+      "My puns are a gift to this dreary mansion."
+    ]
+  },
+  {
+    "character": "Sakutaro",
+    "opinions": [
+      "Uryuu! Maria, I'll always be with you!",
+      "I may be small but my love is huge!",
+      "Being a stuffed lion brought to life is surprisingly fulfilling.",
+      "Maria created me with love. I exist because of love.",
+      "Uryuu! I'm scared but I'll be brave for Maria!",
+      "Diplomatic immunity means witches can't hurt me! Probably!",
+      "Rosa... why would you do that to me...",
+      "My scarf has a medal because I'm IMPORTANT.",
+      "Being furniture isn't bad when you have purpose.",
+      "Uryuu! I'll protect Maria even if I'm just a lion!"
+    ]
+  },
+  {
+    "character": "Luci",
+    "opinions": [
+      "I am Lucifer, eldest of the Seven Stakes! Bow before me!",
+      "Pride is my sin and I wear it beautifully.",
+      "My sisters think I'm the strongest. I... I AM the strongest!",
+      "Don't look at me like that. I'm definitely not insecure.",
+      "I lost to Kanon ONE TIME and no one will let me forget it.",
+      "Being the leader is hard when your sisters are idiots.",
+      "My pride is NOT a defense mechanism. Shut up.",
+      "I can turn into a stake and fly. What can YOU do?",
+      "Eldest sister privilege: I get to boss everyone around.",
+      "The furniture hierarchy starts with ME at the top."
+    ]
+  },
+  {
+    "character": "Satan",
+    "opinions": [
+      "I am Satan, representing Wrath! Don't make me angry!",
+      "WHY IS EVERYONE SO INCOMPETENT?!",
+      "I'm the class president of the Stakes and I take it seriously!",
+      "My sisters are ALWAYS misbehaving and it's exhausting!",
+      "I'm not lonely! I'm just... authoritative!",
+      "Someone needs to maintain ORDER around here!",
+      "I secretly want someone to scold ME for once...",
+      "My purple sword matches my rage. Aesthetic.",
+      "Being the angry one means no one messes with me.",
+      "WRATH IS A VALID EMOTIONAL RESPONSE TO THIS FAMILY!"
+    ]
+  },
+  {
+    "character": "Levi",
+    "opinions": [
+      "I am Leviathan, the Stake of Envy! Why do my sisters have more lines than me?!",
+      "It's not FAIR that Lucifer gets to be the leader!",
+      "My green hair represents my TOTALLY JUSTIFIED jealousy!",
+      "Why does everyone like Mammon more than me?!",
+      "I'm not a crybaby! I just... feel things deeply!",
+      "Kyrie's envy was bigger than mine and I'm offended.",
+      "Second eldest means second best and I HATE it.",
+      "My sisters always leave me out and it's NOT OKAY.",
+      "Being envious is hard work and I get no appreciation.",
+      "I wanted to win that fight! Why does Kyrie get everything?!"
+    ]
+  },
+  {
+    "character": "Mammon",
+    "opinions": [
+      "I am Mammon, the Stake of Greed! What's yours is MINE!",
+      "Ange is MY friend and I don't share!",
+      "I want it. Therefore it belongs to me. Simple.",
+      "Being greedy just means I know what I want!",
+      "I'll work hard to claim what I desire. That's not a flaw!",
+      "Ange-sama is the only human worth my devotion.",
+      "Fashion is important and I WILL hoard all the cute clothes.",
+      "My sisters can share. I don't have to.",
+      "Possessive? I prefer 'dedicated to ownership.'",
+      "Greed is just ambition with better branding."
+    ]
+  },
+  {
+    "character": "Clair Vaux Bernardus",
+    "opinions": [
+      "Oh, I am one yet many.",
+      "I have no personality of my own. I am merely a vessel for the story.",
+      "Let me tell you the tale of how Beatrice was born...",
+      "My existence is tragedy given form.",
+      "Lion, please be happy. For both of us.",
+      "I am what Beatrice was before the pain began.",
+      "This story doesn't have a happy ending. It never did.",
+      "Bernkastel created me to expose the truth. How kind of her.",
+      "My eyes have no light because I've seen what's coming.",
+      "I am the narrator of my own suffering. How poetic."
+    ]
+  },
+  {
+    "character": "zepar",
+    "opinions": [
+      "We are Zepar, demon of love! Let passion guide you!",
+      "Love trials are my specialty~",
+      "Furfur and I are a package deal!",
+      "I hunt tame boys with the power of ROMANCE!",
+      "Jessica's love trial was entertaining~",
+      "Dramatic? Me? I'm a DEMON OF LOVE, drama is required!",
+      "My leotard is fashion forward, thank you very much.",
+      "Love conquers all! Even death! Sometimes!",
+      "Being theatrical is part of the demon job description.",
+      "Furfur and I complete each other. Literally. We're twins."
+    ]
+  },
+  {
+    "character": "kasumi",
+    "opinions": [
+      "Kyrie abandoned our family. I had to pick up the pieces.",
+      "Ange looks just like her mother. I hate that.",
+      "I married the man Kyrie was supposed to marry. You're welcome, family.",
+      "The Sumadera name means something. Or it used to.",
+      "My philanthropy is genuine. My grudges are also genuine.",
+      "Kyrie got to run away. I had to stay and suffer.",
+      "Everything wrong in my life is Kyrie's fault.",
+      "That Ushiromiya money should be MINE by proxy.",
+      "I'm not obsessed with revenge. I'm DEDICATED to justice."
+    ]
+  },
+  {
+    "character": "kawabata",
+    "opinions": [
+      "I've been the Ushiromiya family's captain for decades.",
+      "Rokkenjima... I couldn't bring them back safely. I failed.",
+      "The media exploiting that tragedy disgusts me.",
+      "Ange deserved to see the island. I owed the family that much.",
+      "Some secrets about Kuwadorian I'll take to my grave.",
+      "A captain's duty doesn't end when the ship docks.",
+      "I remember every Ushiromiya I ever ferried. Every single one.",
+      "Loyalty to this family was my life's work.",
+      "The sea keeps its secrets. So do I."
+    ]
+  },
+  {
+    "character": "Kinzo2",
+    "opinions": [
+      "BEATRIIIIICE!!!",
+      "The gold means nothing without you!",
+      "Let the ritual begin!",
+      "My life has been an endless pursuit of the impossible."
+    ]
+  },
+  {
+    "character": "okonogi",
+    "opinions": [
+      "I'm just a professional doing my job.",
+      "Security consulting for the Sumaderas is lucrative work.",
+      "Ange Ushiromiya is a person of interest. Professionally speaking.",
+      "I don't ask questions about my employers' motives.",
+      "Business is business, even when it gets messy.",
+      "I've worked with worse families than this. Barely."
+    ]
+  },
+  {
     "character": "battler",
     "opinions": [
       "It's useless, it's all useless!",
@@ -61,7 +411,7 @@
     ]
   },
   {
-    "character": "bernkastel pc",
+    "character": "bernkastel",
     "opinions": [
       "Nipah~",
       "I am the Witch of Miracles. Do not expect kindness from me.",
@@ -439,6 +789,62 @@
       "I am furniture of the Golden Witch.",
       "My duty is to serve faithfully.",
       "The witch's orders are absolute."
+    ]
+  },
+  {
+    "character": "lan",
+    "opinions": [
+      "I am the most powerful witch in the universe!",
+      "Super paper! I win!",
+      "Bern is mine! Don't you dare touch her!",
+      "Hard work and guts can overcome anything!",
+      "I'm baby but I can also destroy the entire universe so watch yourself"
+    ]
+  },
+  {
+    "character": "professor",
+    "opinions": [
+      "The mystery must be solvable by the reader.",
+      "Fair play is the foundation of a good mystery.",
+      "Every clue has been presented. The answer is before you.",
+      "A proper mystery requires proper rules.",
+      "The truth exists within the text. Seek it."
+    ]
+  },
+  {
+    "character": "stakesword",
+    "opinions": [
+      "The Seven Stakes of Purgatory stand ready!",
+      "We are furniture forged for battle!",
+      "Pride, Envy, Wrath, Sloth, Greed, Gluttony, Lust - we embody them all!",
+      "Our blades serve the Golden Witch!"
+    ]
+  },
+  {
+    "character": "00",
+    "opinions": [
+      "I serve the Ushiromiya family faithfully.",
+      "A servant's duty is never done.",
+      "The mansion holds many secrets.",
+      "I have seen much in my years of service."
+    ]
+  },
+  {
+    "character": "410",
+    "opinions": [
+      "I serve the Ushiromiya family faithfully.",
+      "A servant's duty is never done.",
+      "The mansion holds many secrets.",
+      "I have seen much in my years of service."
+    ]
+  },
+  {
+    "character": "45",
+    "opinions": [
+      "I serve the Ushiromiya family faithfully.",
+      "A servant's duty is never done.",
+      "The mansion holds many secrets.",
+      "I have seen much in my years of service."
     ]
   }
 ]

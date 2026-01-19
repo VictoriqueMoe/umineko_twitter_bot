@@ -27,10 +27,6 @@ func (b *Bot) Run() error {
 		return fmt.Errorf("failed to load content: %w", err)
 	}
 
-	if c.IsEmpty() {
-		return fmt.Errorf("no content available to post")
-	}
-
 	post := b.picker.Pick(c)
 
 	if post.ImagePath != "" {

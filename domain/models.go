@@ -1,11 +1,5 @@
 package domain
 
-type Quote struct {
-	Text      string
-	Character string
-	Episode   string
-}
-
 type Image struct {
 	Path        string
 	Description string
@@ -23,15 +17,5 @@ type Post struct {
 }
 
 type Content struct {
-	Quotes   []Quote
-	Images   []Image
 	Opinions map[string][]string
-}
-
-func (c *Content) Total() int {
-	return len(c.Quotes) + len(c.Images)
-}
-
-func (c *Content) IsEmpty() bool {
-	return c.Total() == 0
 }

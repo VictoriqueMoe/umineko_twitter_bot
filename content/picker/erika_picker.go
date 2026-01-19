@@ -1,30 +1,49 @@
 package picker
 
 import (
-	"math/rand/v2"
-	"strings"
+	"log"
+	"path/filepath"
 
 	"github.com/ray-q/umineko_bot/domain"
+	"github.com/ray-q/umineko_bot/state"
 )
 
-type ErikaPicker struct{}
+type ErikaPicker struct {
+	dataDir   string
+	statePath string
+}
 
-func NewErikaPicker() *ErikaPicker {
-	return &ErikaPicker{}
+func NewErikaPicker(dataDir, statePath string) *ErikaPicker {
+	return &ErikaPicker{dataDir: dataDir, statePath: statePath}
 }
 
 func (p *ErikaPicker) Pick(content *domain.Content) domain.Post {
-	var erikaImages []domain.Image
-	for _, img := range content.Images {
-		if strings.ToLower(img.Character) == "erika" {
-			erikaImages = append(erikaImages, img)
+	erikaDir := filepath.Join(p.dataDir, "images", "erika")
+
+	var s *state.State
+	if p.statePath != "" {
+		var err error
+		s, err = state.Load(p.statePath)
+		if err != nil {
+			log.Printf("Warning: could not load state: %v", err)
+			s = &state.State{}
 		}
+	} else {
+		s = &state.State{}
 	}
 
-	if len(erikaImages) == 0 {
+	imagePath, relPath, err := pickRandomFile(erikaDir, s.ErikaHistory)
+	if err != nil {
+		log.Printf("Error picking erika image: %v", err)
 		return domain.Post{Text: "No Erika images available."}
 	}
 
-	idx := rand.IntN(len(erikaImages))
-	return domain.Post{ImagePath: erikaImages[idx].Path}
+	if p.statePath != "" {
+		s.AddErikaPost(relPath)
+		if err := s.Save(p.statePath); err != nil {
+			log.Printf("Warning: could not save state: %v", err)
+		}
+	}
+
+	return domain.Post{ImagePath: imagePath}
 }
