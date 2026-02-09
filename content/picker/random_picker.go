@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/ray-q/umineko_bot/domain"
+	"github.com/ray-q/umineko_bot/quote"
 	"github.com/ray-q/umineko_bot/state"
 )
 
@@ -22,12 +23,15 @@ var doubleErikaMemes = []string{
 }
 
 type RandomPicker struct {
-	dataDir   string
-	statePath string
+	dataDir     string
+	statePath   string
+	quoteClient *quote.Client
 }
 
-func NewRandomPicker(dataDir, statePath string) *RandomPicker {
-	return &RandomPicker{dataDir: dataDir, statePath: statePath}
+const twitterCharLimit = 280
+
+func NewRandomPicker(dataDir, statePath string, quoteClient *quote.Client) *RandomPicker {
+	return &RandomPicker{dataDir: dataDir, statePath: statePath, quoteClient: quoteClient}
 }
 
 func (p *RandomPicker) Pick(content *domain.Content) domain.Post {
@@ -95,6 +99,24 @@ func (p *RandomPicker) formatImagePost(imagePath, character string, content *dom
 		hashtag = "#UminekoNoNakuKoroNi"
 	}
 	parts = append(parts, hashtag)
+
+	if p.quoteClient != nil && character != "" {
+		charKey := strings.ToLower(character)
+		if char, ok := quote.LookupCharacter(charKey); ok {
+			for i := 0; i < 3; i++ {
+				q := p.quoteClient.RandomQuote(char)
+				if q == "" {
+					break
+				}
+				quoted := fmt.Sprintf("「%s」", q)
+				candidate := strings.Join(append([]string{quoted}, parts...), "\n\n")
+				if len(candidate) <= twitterCharLimit {
+					parts = append([]string{quoted}, parts...)
+					break
+				}
+			}
+		}
+	}
 
 	return domain.Post{Text: strings.Join(parts, "\n\n"), ImagePath: imagePath}
 }

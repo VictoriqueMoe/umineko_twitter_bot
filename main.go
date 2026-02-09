@@ -13,6 +13,7 @@ import (
 	"github.com/ray-q/umineko_bot/content"
 	"github.com/ray-q/umineko_bot/content/loader"
 	"github.com/ray-q/umineko_bot/content/picker"
+	"github.com/ray-q/umineko_bot/quote"
 )
 
 func main() {
@@ -42,12 +43,18 @@ func main() {
 	statePath := resolveStatePath()
 	log.Printf("Using state file: %s", statePath)
 
+	quoteURL := os.Getenv("QUOTE_SERVICE_URL")
+	if quoteURL == "" {
+		quoteURL = "https://quotes.auaurora.moe"
+	}
+	quoteClient := quote.NewClient(quoteURL)
+
 	var p content.Picker
 	switch mode {
 	case ModeErika:
-		p = picker.NewErikaPicker(dataDir, statePath)
+		p = picker.NewErikaPicker(dataDir, statePath, quoteClient)
 	case ModeRandom:
-		p = picker.NewRandomPicker(dataDir, statePath)
+		p = picker.NewRandomPicker(dataDir, statePath, quoteClient)
 	}
 
 	b := bot.New(poster, contentLoader, p)

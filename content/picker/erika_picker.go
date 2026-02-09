@@ -1,20 +1,23 @@
 package picker
 
 import (
+	"fmt"
 	"log"
 	"path/filepath"
 
 	"github.com/ray-q/umineko_bot/domain"
+	"github.com/ray-q/umineko_bot/quote"
 	"github.com/ray-q/umineko_bot/state"
 )
 
 type ErikaPicker struct {
-	dataDir   string
-	statePath string
+	dataDir     string
+	statePath   string
+	quoteClient *quote.Client
 }
 
-func NewErikaPicker(dataDir, statePath string) *ErikaPicker {
-	return &ErikaPicker{dataDir: dataDir, statePath: statePath}
+func NewErikaPicker(dataDir, statePath string, quoteClient *quote.Client) *ErikaPicker {
+	return &ErikaPicker{dataDir: dataDir, statePath: statePath, quoteClient: quoteClient}
 }
 
 func (p *ErikaPicker) Pick(content *domain.Content) domain.Post {
@@ -45,5 +48,13 @@ func (p *ErikaPicker) Pick(content *domain.Content) domain.Post {
 		}
 	}
 
-	return domain.Post{ImagePath: imagePath}
+	text := ""
+	if p.quoteClient != nil {
+		q := p.quoteClient.RandomQuote(quote.Erika)
+		if q != "" {
+			text = fmt.Sprintf("「%s」", q)
+		}
+	}
+
+	return domain.Post{Text: text, ImagePath: imagePath}
 }
