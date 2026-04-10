@@ -28,17 +28,18 @@ func NewClient(baseURL string) *Client {
 }
 
 func (c *Client) RandomQuote(char Character) string {
-	url := fmt.Sprintf("%s/api/v1/random?character=%s&lang=en", c.baseURL, string(char))
+	url := fmt.Sprintf("%s/api/v1/umineko/random?character=%s&lang=en", c.baseURL, string(char))
 	resp, err := c.httpClient.Get(url)
-	if err != nil {
-		log.Printf("Warning: failed to fetch quote: %v", err)
+	if err != nil || resp.StatusCode != http.StatusOK {
+		if err != nil {
+			log.Printf("Warning: failed to fetch quote: %v", err)
+		} else {
+			log.Printf("Warning: failed to fetch quote (status %d)", resp.StatusCode)
+		}
+
 		return ""
 	}
 	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return ""
-	}
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
